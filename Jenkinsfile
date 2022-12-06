@@ -1,22 +1,24 @@
-pipeline {
-    agent any 
-    stages {
-	    
+pipeline 
+{
+    agent any  
+    stages 
+  { 
+		stage('Authenticate') 
+		{		
+			 steps 
+			 {		
+					sh "sfdx force:auth:sfdxurl:store -f ./Auth_URL.txt -a PrateekOrg"
+			 }			
+		 }
+      
+		  stage('Validate') 
+		 {		
+			 steps 
+			 {
+					sh "sfdx force:source:deploy -c -p 'force-app' -u PrateekOrg"
+			 }
+       
+     }
 
-        stage("Clone sources") { 
-		
-		checkout scm           
-	}
-	    
-        stage('Validate') {
-		
-           sfdx force:mdapi:deploy -c -g -l NoTestRun -f ./manifest/package.xml -w -1 -u Test1
-        }
-		
-		stage('Deploy') {
-		
-		sfdx force:mdapi:deploy -g -l NoTestRun -f ./manifest/package.xml -w -1 -u Test1
-            
-        }
-    }
+   }
 }
