@@ -7,7 +7,7 @@ pipeline
 		{		
 			 steps 
 			 {		
-					sh "sfdx force:auth:sfdxurl:store -f ./Auth_URL.txt -a PrateekOrg"
+					sh "sfdx force:auth:sfdxurl:store -f ./Auth_URL.txt -a POrg"
 			 }			
 		 }
       
@@ -15,7 +15,7 @@ pipeline
 		 {		
 			 steps 
 			 {
-					sh "sfdx force:source:deploy -c -p 'force-app' -u PrateekOrg"
+					sh "sfdx force:source:deploy -c -p 'force-app' -u POrg"
 			 }
        
      }
