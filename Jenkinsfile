@@ -7,7 +7,7 @@ pipeline
 		{		
 			 steps 
 			 {		
-					bat "sfdx force:auth:sfdxurl:store -f ./Auth_URL.txt -a POrg"
+					sh "sfdx force:auth:sfdxurl:store -f ./Auth_URL.txt -a POrg"
 			 }			
 		 }
       
@@ -15,7 +15,7 @@ pipeline
 		 {		
 			 steps 
 			 {
-					bat "sfdx force:source:deploy -c -p 'force-app' -u POrg"
+					sh "sfdx force:source:deploy -c -p 'force-app' -u POrg"
 			 }
        
      }
